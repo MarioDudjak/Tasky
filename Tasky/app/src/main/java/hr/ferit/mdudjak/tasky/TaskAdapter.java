@@ -60,6 +60,10 @@ public class TaskAdapter extends BaseAdapter{
         this.mTasks.add(task);
         this.notifyDataSetChanged();
     }
+    public void deleteAt(int position) {
+        this.mTasks.remove(position);
+        this.notifyDataSetChanged();
+    }
 
     public static class ViewHolder{
         public TextView tvTaskTitle, tvTaskText;

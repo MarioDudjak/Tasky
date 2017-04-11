@@ -1,9 +1,12 @@
 package hr.ferit.mdudjak.tasky;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -31,9 +34,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bNewTask.setOnClickListener(this);
         this.lvTaskList = (ListView) this.findViewById(R.id.lvTaskList);
         ArrayList<Task> tasks = this.loadTasks();
-        TaskAdapter taskAdapter = new TaskAdapter(tasks);
+        final TaskAdapter taskAdapter = new TaskAdapter(tasks);
         this.lvTaskList.setAdapter(taskAdapter);
 
+        this.lvTaskList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                    dialogBuilder.setMessage("Do you want to delete task?");
+                    //dialogBuilder.setCancelable(true);
+
+                    dialogBuilder.setPositiveButton(
+                            "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    taskAdapter.deleteAt(position);
+                                    dialog.cancel();
+                                }
+                            });
+
+                    dialogBuilder.setNegativeButton(
+                            "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alertDialog = dialogBuilder.create();
+                    alertDialog.show();
+                    return true;
+                }
+            });
     }
 
     private ArrayList<Task> loadTasks() {
@@ -69,5 +103,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             adapter.insert(task);
         }
 
-    }
+
+}
 
