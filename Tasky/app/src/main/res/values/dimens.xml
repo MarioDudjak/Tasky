@@ -2,7 +2,10 @@
 <resources>
     <dimen name="titleSize">40sp</dimen> >
     <dimen name="marginBottomOfTitle">20dp</dimen>
-    <dimen name="taskPadding">10dp</dimen>
+    <dimen name="taskPadding">5dp</dimen>
     <dimen name="bookTitleSize">15sp</dimen>
     <dimen name="textTitleSize">8sp</dimen>
+    <dimen name="ImagePriorityWidth">10dp</dimen>
+    <dimen name="ImagePriorityHeight">30dp</dimen>
+    <dimen name="leftPaddingOfTitleAndText">5dp</dimen>
 </resources>

@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/titleOfAddTaskActivity"
         android:hint="@string/hintOfAddTaskTitleEditText"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
         />
 
     <EditText
@@ -29,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/etTaskTitle"
         android:hint="@string/hintOfAddTaskTextEditText"
+        android:imeOptions="actionDone"
         />
 
     <Spinner

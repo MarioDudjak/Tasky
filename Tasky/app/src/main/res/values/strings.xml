@@ -6,9 +6,11 @@
     <string name="textOfAddCategoryActivityButton">ADD CATEGORY</string>
     <string name="textOfAddTaskActivityButton">ADD TASK</string>
     <string name="hintOfAddTaskTextEditText">Task text</string>
+    <string name="titleInputControl">Name of the task cannot be empty!</string>
+    <string name="textInputControl">Text of the task cannot be empty!</string>
     <string-array name="task_priority">
         <item>Low</item>
-        <item>Normal</item>
+        <item>Medium</item>
         <item>High</item>
     </string-array>
 

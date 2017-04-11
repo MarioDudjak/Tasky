@@ -4,17 +4,30 @@
     android:layout_height="match_parent"
     android:padding="@dimen/taskPadding">
 
+   <ImageView
+       android:id="@+id/ivTaskPriorityColor"
+       android:layout_width="@dimen/ImagePriorityWidth"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_alignBottom="@+id/tvTaskText"
+       />
+
     <TextView
         android:id="@+id/tvTaskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ivTaskPriorityColor"
+        android:layout_marginLeft="@dimen/leftPaddingOfTitleAndText"
         android:textSize="@dimen/bookTitleSize"
+
         />
     <TextView
         android:id="@+id/tvTaskText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvTaskTitle"
+        android:layout_toRightOf="@id/ivTaskPriorityColor"
+        android:layout_marginLeft="@dimen/leftPaddingOfTitleAndText"
         android:textSize="@dimen/textTitleSize"
         />
 

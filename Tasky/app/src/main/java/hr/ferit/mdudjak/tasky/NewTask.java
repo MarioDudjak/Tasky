@@ -38,15 +38,28 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        String sTaskName, sTaskText, sTaskPriority;
-        sTaskName= etTaskName.getText().toString();
-        sTaskText=etTaskText.getText().toString();
-        sTaskPriority=spinner.getSelectedItem().toString();
-        Intent explicitIntent = new Intent(getApplicationContext(),MainActivity.class);
-        explicitIntent.putExtra(KEY_CALLING_ACTIVITY, sTaskName);
-        explicitIntent.putExtra(KEY_INPUT_TITLE, sTaskName);
-        explicitIntent.putExtra(KEY_INPUT_TEXT, sTaskText);
-        explicitIntent.putExtra(KEY_INPUT_PRIORITY, sTaskPriority);
-        this.startActivity(explicitIntent);
+        String sTaskName = null, sTaskText =null, sTaskPriority;
+
+        if(etTaskName.getText().toString().isEmpty()){
+            etTaskName.setError(this.getResources().getString(R.string.titleInputControl));
+        }
+        else {
+            sTaskName= etTaskName.getText().toString();
+        }
+        if(etTaskText.getText().toString().isEmpty()) {
+            etTaskText.setError(this.getResources().getString(R.string.textInputControl));
+        }
+        else {
+            sTaskText=etTaskText.getText().toString();
+        }
+        if(!(etTaskName.getText().toString().isEmpty()||etTaskText.getText().toString().isEmpty())) {
+            sTaskPriority = spinner.getSelectedItem().toString();
+            Intent explicitIntent = new Intent(getApplicationContext(), MainActivity.class);
+            explicitIntent.putExtra(KEY_CALLING_ACTIVITY, KEY_CALLING_ACTIVITY);
+            explicitIntent.putExtra(KEY_INPUT_TITLE, sTaskName);
+            explicitIntent.putExtra(KEY_INPUT_TEXT, sTaskText);
+            explicitIntent.putExtra(KEY_INPUT_PRIORITY, sTaskPriority);
+            this.startActivity(explicitIntent);
+        }
     }
 }

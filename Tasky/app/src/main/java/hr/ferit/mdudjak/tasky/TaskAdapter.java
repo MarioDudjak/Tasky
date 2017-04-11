@@ -1,10 +1,15 @@
 package hr.ferit.mdudjak.tasky;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -47,7 +52,7 @@ public class TaskAdapter extends BaseAdapter{
         Task task = this.mTasks.get(position);
         taskViewHolder.tvTaskTitle.setText(task.getTitle());
         taskViewHolder.tvTaskText.setText(task.getText());
-       // taskViewHolder.tvTaskPicture.setText(task.getPictureUrl());
+        taskViewHolder.ivTaskPicture.setImageResource(task.getPriority());
         return convertView;
     }
 
@@ -57,11 +62,13 @@ public class TaskAdapter extends BaseAdapter{
     }
 
     public static class ViewHolder{
-        public TextView tvTaskTitle, tvTaskText, tvTaskPicture;
+        public TextView tvTaskTitle, tvTaskText;
+        ImageView  ivTaskPicture;
+
         public ViewHolder(View taskView){
             tvTaskTitle= (TextView) taskView.findViewById(R.id.tvTaskTitle);
             tvTaskText= (TextView) taskView.findViewById(R.id.tvTaskText);
-            //Nešta za sliku
+            ivTaskPicture = (ImageView) taskView.findViewById(R.id.ivTaskPriorityColor);
         }
     }
 }
