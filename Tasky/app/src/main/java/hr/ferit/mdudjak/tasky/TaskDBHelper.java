@@ -24,19 +24,19 @@ public class TaskDBHelper extends SQLiteOpenHelper {
         return mTaskDBHelper;
     }
     @Override
-    public void onCreate(SQLiteDatabase db) { db.execSQL(CREATE_TABLE_MY_BOOKS); }
+    public void onCreate(SQLiteDatabase db) { db.execSQL(CREATE_TABLE_MY_TASKS); }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(DROP_TABLE_MY_BOOKS);
+        db.execSQL(DROP_TABLE_MY_TASKS);
         this.onCreate(db);
     }
     //SQL statements
-    static final String CREATE_TABLE_MY_BOOKS = "CREATE TABLE " + Schema.TABLE_MY_BOOKS +
+    static final String CREATE_TABLE_MY_TASKS = "CREATE TABLE " + Schema.TABLE_MY_TASKS +
             " (" + Schema.TASK_TEXT + " TEXT," + Schema.TITLE + " TEXT," + Schema.PRIORITY + " INTEGER);";
-    static final String DROP_TABLE_MY_BOOKS = "DROP TABLE IF EXISTS " + Schema.TABLE_MY_BOOKS;
-    static final String SELECT_ALL_BOOKS = "SELECT " + Schema.TASK_TEXT + "," + Schema.TITLE + ","
+    static final String DROP_TABLE_MY_TASKS = "DROP TABLE IF EXISTS " + Schema.TABLE_MY_TASKS;
+    static final String SELECT_ALL_TASKS = "SELECT " + Schema.TASK_TEXT + "," + Schema.TITLE + ","
             +
-            Schema.PRIORITY + " FROM " + Schema.TABLE_MY_BOOKS;
+            Schema.PRIORITY + " FROM " + Schema.TABLE_MY_TASKS;
     // CRUD should be performed on another thread
     public void insertTask(Task task){
         ContentValues contentValues = new ContentValues();
@@ -44,12 +44,12 @@ public class TaskDBHelper extends SQLiteOpenHelper {
         contentValues.put(Schema.TITLE, task.getTitle());
         contentValues.put(Schema.PRIORITY, task.getPriority());
         SQLiteDatabase writeableDatabase = this.getWritableDatabase();
-        writeableDatabase.insert(Schema.TABLE_MY_BOOKS, Schema.TITLE,contentValues);
+        writeableDatabase.insert(Schema.TABLE_MY_TASKS, Schema.TITLE,contentValues);
         writeableDatabase.close();
     }
     public ArrayList<Task> getAllTasks(){
         SQLiteDatabase writeableDatabase = this.getWritableDatabase();
-        Cursor taskCursor = writeableDatabase.rawQuery(SELECT_ALL_BOOKS,null);
+        Cursor taskCursor = writeableDatabase.rawQuery(SELECT_ALL_TASKS,null);
         ArrayList<Task> tasks = new ArrayList<>();
         if(taskCursor.moveToFirst()){
             do{
@@ -65,9 +65,9 @@ public class TaskDBHelper extends SQLiteOpenHelper {
     }
     public static class Schema{
         private static final int SCHEMA_VERSION = 1;
-        private static final String DATABASE_NAME = "books.db";
-        //A table to store owned books:
-        static final String TABLE_MY_BOOKS = "my_books";
+        private static final String DATABASE_NAME = "tasks.db";
+
+        static final String TABLE_MY_TASKS = "my_tasks";
         static final String TASK_TEXT = "text";
         static final String TITLE = "title";
         static final String PRIORITY = "priority";

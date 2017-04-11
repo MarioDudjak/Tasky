@@ -1,5 +1,6 @@
 package hr.ferit.mdudjak.tasky;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,10 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 
 public class NewTask extends AppCompatActivity implements View.OnClickListener {
+    public static final String KEY_INPUT_TITLE = "input title";
+    public static final String KEY_INPUT_TEXT = "input text";
+    public static final String KEY_INPUT_PRIORITY = "input priority" ;
+    public static final String KEY_CALLING_ACTIVITY = "NewTask";
     Button bAddTask;
     EditText etTaskName,etTaskText;
     Spinner spinner;
@@ -33,15 +38,15 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        /*String sTaskName, sTaskText, sTaskPriority;
+        String sTaskName, sTaskText, sTaskPriority;
         sTaskName= etTaskName.getText().toString();
         sTaskText=etTaskText.getText().toString();
         sTaskPriority=spinner.getSelectedItem().toString();
-        Task task = new Task(sTaskName,sTaskText,sTaskPriority);
-        TaskDBHelper.getInstance(getApplicationContext()).insertTask(task);
-        TaskAdapter adapter = (TaskAdapter) lvTaskList.getAdapter();
-        adapter.insert(task);*/
-
-
+        Intent explicitIntent = new Intent(getApplicationContext(),MainActivity.class);
+        explicitIntent.putExtra(KEY_CALLING_ACTIVITY, sTaskName);
+        explicitIntent.putExtra(KEY_INPUT_TITLE, sTaskName);
+        explicitIntent.putExtra(KEY_INPUT_TEXT, sTaskText);
+        explicitIntent.putExtra(KEY_INPUT_PRIORITY, sTaskPriority);
+        this.startActivity(explicitIntent);
     }
 }
