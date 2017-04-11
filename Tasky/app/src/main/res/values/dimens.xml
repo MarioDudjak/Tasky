@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titleSize">40sp</dimen> >
+    <dimen name="marginBottomOfTitle">20dp</dimen>
+    <dimen name="taskPadding">10dp</dimen>
+    <dimen name="bookTitleSize">15sp</dimen>
+    <dimen name="textTitleSize">8sp</dimen>
+</resources>

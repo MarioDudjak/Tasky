@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Tasky</string>
+    <string name="titleOfAddCategoryActivity">NEW CATEGORY</string>
+    <string name="titleOfAddTaskActivity">NEW TASK</string>
+    <string name="hintOfAddCategoryEditText">Category name</string>
+    <string name="hintOfAddTaskEditText">Task name</string>
+    <string name="newTaskButtonText">NEW TASK</string>
+    <string name="newCategoryButtonText">NEW CATEGORY</string>
+    <string name="textOfAddCategoryActivityButton">ADD CATEGORY</string>
+    <string name="textOfAddTaskActivityButton">ADD TASK</string>
+</resources>

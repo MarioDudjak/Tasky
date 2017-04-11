@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hr.ferit.mdudjak.tasky.NewTask">
+
+<TextView
+    android:id="@+id/titleOfAddTaskActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/titleOfAddTaskActivity"
+    android:textSize="@dimen/titleSize"
+    android:gravity="center"
+    android:layout_marginBottom="@dimen/marginBottomOfTitle"/>
+
+    <EditText
+        android:id="@+id/etxtMainActivityInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleOfAddTaskActivity"
+        android:hint="@string/hintOfAddTaskEditText"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textOfAddTaskActivityButton"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        />
+
+
+
+</RelativeLayout>
