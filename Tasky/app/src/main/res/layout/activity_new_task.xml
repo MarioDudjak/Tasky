@@ -16,14 +16,31 @@
     android:layout_marginBottom="@dimen/marginBottomOfTitle"/>
 
     <EditText
-        android:id="@+id/etxtMainActivityInput"
+        android:id="@+id/etTaskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/titleOfAddTaskActivity"
-        android:hint="@string/hintOfAddTaskEditText"
+        android:hint="@string/hintOfAddTaskTitleEditText"
+        />
+
+    <EditText
+        android:id="@+id/etTaskText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etTaskTitle"
+        android:hint="@string/hintOfAddTaskTextEditText"
+        />
+
+    <Spinner
+        android:id="@+id/task_spinner"
+        android:layout_width="fill_parent"
+        android:layout_below="@id/etTaskText"
+        android:layout_height="wrap_content"
+        android:entries="@array/task_priority"
         />
 
     <Button
+        android:id="@+id/bAddTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/textOfAddTaskActivityButton"

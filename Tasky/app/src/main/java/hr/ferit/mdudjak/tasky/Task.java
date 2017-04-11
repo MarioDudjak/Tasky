@@ -5,13 +5,14 @@ package hr.ferit.mdudjak.tasky;
  */
 
 public class Task {
-    private String mTitle,mText, mPictureUrl;
-    public  Task(String title, String text, String URL){
+    private String mTitle,mText;
+    private int mPriority;
+    public  Task(String title, String text, int URL){
         mTitle=title;
         mText=text;
-        mPictureUrl=URL;
+        mPriority=URL;
     }
     public String getTitle() { return mTitle;}
     public String getText() { return mText;}
-    public String getPictureUrl() { return mPictureUrl;}
+    public int getPriority() { return mPriority;}
 }

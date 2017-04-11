@@ -5,9 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    Button bNewTask, bNewCategory;
+    Button bNewTask;
+    ListView lvTaskList;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,26 +24,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setUpUI() {
-        this.bNewTask = (Button) findViewById(R.id.bNewTask);
-        this.bNewCategory = (Button) findViewById(R.id.bNewCategory);
+        this.bNewTask = (Button) this.findViewById(R.id.bNewTask);
         bNewTask.setOnClickListener(this);
-        bNewCategory.setOnClickListener(this);
+        this.lvTaskList = (ListView) this.findViewById(R.id.lvTaskList);
+        ArrayList<Task> tasks = this.loadTasks();
+        TaskAdapter taskAdapter = new TaskAdapter(tasks);
+       this.lvTaskList.setAdapter(taskAdapter);
+
+    }
+
+    private ArrayList<Task> loadTasks() {
+        return TaskDBHelper.getInstance(this).getAllTasks();
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent = null;
-        switch (v.getId()){
-            case(R.id.bNewTask):
-                intent = new Intent(this, NewTask.class);
-                this.startActivity(intent);
-                break;
-
-            case(R.id.bNewCategory):
-                intent = new Intent(this, NewCategory.class);
-                this.startActivity(intent);
-                break;
-
+       /* Intent intent = new Intent(this, NewTask.class);
+        this.startActivity(intent);*/
+        Task task = new Task("My book","Me",1);
+        TaskDBHelper.getInstance(getApplicationContext()).insertTask(task);
+        TaskAdapter adapter = (TaskAdapter) lvTaskList.getAdapter();
+        adapter.insert(task);
         }
-    }
 }
