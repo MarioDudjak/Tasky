@@ -32,9 +32,9 @@ public class TaskDBHelper extends SQLiteOpenHelper {
     }
     //SQL statements
     static final String CREATE_TABLE_MY_TASKS = "CREATE TABLE " + Schema.TABLE_MY_TASKS +
-            " (" + Schema.TASK_TEXT + " TEXT," + Schema.TITLE + " TEXT," + Schema.PRIORITY + " INTEGER);";
+            " (" + Schema.ID + " INTEGER PRIMARY KEY, " + Schema.TASK_TEXT + " TEXT," + Schema.TITLE + " TEXT," + Schema.PRIORITY + " INTEGER);";
     static final String DROP_TABLE_MY_TASKS = "DROP TABLE IF EXISTS " + Schema.TABLE_MY_TASKS;
-    static final String SELECT_ALL_TASKS = "SELECT " + Schema.TASK_TEXT + "," + Schema.TITLE + ","
+    static final String SELECT_ALL_TASKS = "SELECT " + Schema.ID + "," + Schema.TASK_TEXT + "," + Schema.TITLE + ","
             +
             Schema.PRIORITY + " FROM " + Schema.TABLE_MY_TASKS;
     // CRUD should be performed on another thread
@@ -53,20 +53,31 @@ public class TaskDBHelper extends SQLiteOpenHelper {
         ArrayList<Task> tasks = new ArrayList<>();
         if(taskCursor.moveToFirst()){
             do{
-                String title = taskCursor.getString(0);
-                String text = taskCursor.getString(1);
-                int priority = taskCursor.getInt(2);
-                tasks.add(new Task(title, text, priority));
+                int ID = taskCursor.getInt(0);
+                String title = taskCursor.getString(1);
+                String text = taskCursor.getString(2);
+                int priority = taskCursor.getInt(3);
+                tasks.add(new Task(ID,title, text, priority));
             }while(taskCursor.moveToNext());
         }
         taskCursor.close();
         writeableDatabase.close();
         return tasks;
     }
+
+    public void deleteTask(Task task) {
+        int id = task.getID();
+        String[] arg = new String[]{String.valueOf(id)};
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Schema.TABLE_MY_TASKS, Schema.ID + "=?",arg);
+        db.close();
+
+    }
+
     public static class Schema{
         private static final int SCHEMA_VERSION = 1;
         private static final String DATABASE_NAME = "tasks.db";
-
+        static final String ID = "id";
         static final String TABLE_MY_TASKS = "my_tasks";
         static final String TASK_TEXT = "text";
         static final String TITLE = "title";

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="hr.ferit.mdudjak.tasky.MainActivity">
+    tools:context="hr.ferit.mdudjak.tasky.MainActivity"
+    android:background="@color/itemColor"
+    >
 
     <ListView
         android:id="@+id/lvTaskList"
@@ -21,6 +23,8 @@
             android:layout_alignParentBottom="true"
             android:layout_weight="0.5"
             android:text="@string/newTaskButtonText"
+            android:background="@color/itemColor"
+            android:textColor="@color/itemTextColor"
             />
 
 

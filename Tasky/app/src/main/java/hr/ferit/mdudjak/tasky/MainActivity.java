@@ -1,10 +1,14 @@
 package hr.ferit.mdudjak.tasky;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -14,6 +18,7 @@ import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button bNewTask;
@@ -50,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             "Yes",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
+
+                                    TaskDBHelper.getInstance(getApplicationContext()).deleteTask((Task) taskAdapter.getItem(position));
                                     taskAdapter.deleteAt(position);
                                     dialog.cancel();
                                 }
@@ -102,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             TaskAdapter adapter = (TaskAdapter) lvTaskList.getAdapter();
             adapter.insert(task);
         }
+
 
 
 }

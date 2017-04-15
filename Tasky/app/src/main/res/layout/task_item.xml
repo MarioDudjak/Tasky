@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/taskPadding">
+    android:padding="@dimen/taskPadding"
+    android:background="@color/backgroundColor">
 
    <ImageView
        android:id="@+id/ivTaskPriorityColor"
@@ -10,6 +11,7 @@
        android:layout_height="wrap_content"
        android:layout_alignParentTop="true"
        android:layout_alignBottom="@+id/tvTaskText"
+
        />
 
     <TextView
@@ -18,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/ivTaskPriorityColor"
         android:layout_marginLeft="@dimen/leftPaddingOfTitleAndText"
-        android:textSize="@dimen/bookTitleSize"
+        android:textSize="@dimen/textTitleSize"
+        android:textColor="@color/textColor"
 
         />
     <TextView
@@ -28,7 +31,9 @@
         android:layout_below="@id/tvTaskTitle"
         android:layout_toRightOf="@id/ivTaskPriorityColor"
         android:layout_marginLeft="@dimen/leftPaddingOfTitleAndText"
-        android:textSize="@dimen/textTitleSize"
+        android:textSize="@dimen/taskTextSize"
+        android:textColor="@color/textColor"
+
         />
 
 </RelativeLayout>
